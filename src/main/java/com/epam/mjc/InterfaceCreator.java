@@ -28,11 +28,13 @@ public class InterfaceCreator {
 
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {
         Consumer<List<Integer>> addEvenValues = x -> {
+            List<Integer> l = new ArrayList<>();
             for(Integer i : x)
             {
                 if(i%2==0)
-                    x.add(i);
+                    l.add(i);
             }
+            x.addAll(l);
             return;
         };
         return addEvenValues;
@@ -45,7 +47,7 @@ public class InterfaceCreator {
             {
                 if(Character.isUpperCase(s.charAt(0)) &&
                 s.endsWith(".") &&
-                s.split(" ").length >= 2)
+                s.split(" ").length > 3)
                     filteredStrings.add(s);
             }
             return filteredStrings;

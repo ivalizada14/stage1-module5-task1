@@ -17,7 +17,7 @@ public class InterfaceCreator {
         Predicate<List<String>> startWithUpperCase = x -> {
             for(String s : x)
             {
-                if(Character.isLetter(s.charAt(0)) && Character.isUpperCase(s.charAt(0)))
+                if(!Character.isLetter(s.charAt(0)) || Character.isLowerCase(s.charAt(0)))
                     return false;
             }
             return true;
@@ -33,6 +33,7 @@ public class InterfaceCreator {
                 if(i%2==0)
                     x.add(i);
             }
+            return;
         };
         return addEvenValues;
     }

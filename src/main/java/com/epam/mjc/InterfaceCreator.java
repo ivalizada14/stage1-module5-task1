@@ -17,7 +17,7 @@ public class InterfaceCreator {
         Predicate<List<String>> startWithUpperCase = x -> {
             for(String s : x)
             {
-                if(Character.isLetter(s.charAt(0)) && Character.isLowerCase(s.charAt(0)))
+                if(Character.isLetter(s.charAt(0)) && Character.isUpperCase(s.charAt(0)))
                     return false;
             }
             return true;
@@ -44,7 +44,7 @@ public class InterfaceCreator {
             {
                 if(Character.isUpperCase(s.charAt(0)) &&
                 s.endsWith(".") &&
-                s.split(" ").length >= 3)
+                s.split(" ").length >= 2)
                     filteredStrings.add(s);
             }
             return filteredStrings;

@@ -10,13 +10,17 @@ import java.util.function.Supplier;
 
 public class InterfaceCreator {
 
-    public Predicate<List<String>> isValuesStartWithUpperCase = x ->{
-        for(String s : x)
-        {
-            if(Character.isLowerCase(s.charAt(0)))
-                return false;
-        }
-        return true;
+    public Predicate<List<String>> isValuesStartWithUpperCase(){
+        Predicate<List<String>> startWithUpperCase = x -> {
+            for(String s : x)
+            {
+                if(Character.isLowerCase(s.charAt(0)))
+                    return false;
+            }
+            return true;
+        };
+        return startWithUpperCase;
+
     };
 
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {

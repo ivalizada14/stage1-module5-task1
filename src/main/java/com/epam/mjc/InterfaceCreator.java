@@ -1,5 +1,8 @@
 package com.epam.mjc;
 
+import java.net.Inet4Address;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
@@ -14,7 +17,7 @@ public class InterfaceCreator {
         Predicate<List<String>> startWithUpperCase = x -> {
             for(String s : x)
             {
-                if(Character.isLowerCase(s.charAt(0)))
+                if(Character.isLetter(s.charAt(0)) && Character.isLowerCase(s.charAt(0)))
                     return false;
             }
             return true;
@@ -24,18 +27,49 @@ public class InterfaceCreator {
     };
 
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {
-        throw new UnsupportedOperationException("You should implement this method.");
+        Consumer<List<Integer>> addEvenValues = x -> {
+            for(Integer i : x)
+            {
+                if(i%2==0)
+                    x.add(i);
+            }
+        };
+        return addEvenValues;
     }
 
     public Supplier<List<String>> filterCollection(List<String> values) {
-        throw new UnsupportedOperationException("You should implement this method.");
+        Supplier<List<String>> filterC = () -> {
+            List<String> filteredStrings = new ArrayList<>();
+            for(String s : values)
+            {
+                if(Character.isUpperCase(s.charAt(0)) &&
+                s.endsWith(".") &&
+                s.split(" ").length >= 3)
+                    filteredStrings.add(s);
+            }
+            return filteredStrings;
+        };
+        return  filterC;
     }
 
     public Function<List<String>, Map<String, Integer>> stringSize() {
-        throw new UnsupportedOperationException("You should implement this method.");
+        Function<List<String>, Map<String, Integer>> f = x ->{
+            Map<String, Integer> map = new HashMap<>();
+            for(String s : x)
+            {
+                map.put(s, s.length());
+            }
+            return map;
+        };
+        return f;
     }
 
     public BiFunction<List<Integer>, List<Integer>, List<Integer>> concatList() {
-        throw new UnsupportedOperationException("You should implement this method.");
+        BiFunction<List<Integer>, List<Integer>, List<Integer>> biFunction = (list1, list2) ->{
+          List<Integer> list3 = new ArrayList<>();
+          list3.addAll(list1); list3.addAll(list2);
+          return list3;
+        };
+        return biFunction;
     }
 }
